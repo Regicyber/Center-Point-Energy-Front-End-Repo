@@ -2,12 +2,14 @@ version: 1
 env:
   variables:
     NEXT_PUBLIC_LAMBDA_URL: $NEXT_PUBLIC_LAMBDA_URL
+    NODE_ENV: production
+    NODE_OPTIONS: "--max_old_space_size=3072"
 
 frontend:
   phases:
     preBuild:
       commands:
-        - npm ci
+        - npm ci --legacy-peer-deps
     build:
       commands:
         - npm run build
@@ -17,4 +19,5 @@ frontend:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
+      - 'node_modules/**/*'
+      - '.next/cache/**/*'

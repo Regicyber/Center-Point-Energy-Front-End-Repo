@@ -148,7 +148,7 @@ export default function Home() {
   useEffect(() => {
     setIsHydrated(true);
     setMessages((prevMessages) =>
-      prevMessages.map((msg, index) => ({
+      prevMessages.map((msg) => ({
         ...msg,
         timestamp: msg.timestamp || new Date().toLocaleTimeString(),
       }))
